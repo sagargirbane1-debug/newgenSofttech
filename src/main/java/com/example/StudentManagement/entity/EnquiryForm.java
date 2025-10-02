@@ -47,6 +47,10 @@ public class EnquiryForm {
    // @Column(name = "enquirytime")
     private LocalDateTime enquirytime;
 
+
+
+    private String courseselected ;
+
     public Long getId() {
         return id;
     }
@@ -128,25 +132,28 @@ public class EnquiryForm {
         this.enquirytime = enquirytime;
     }
 
+    public String getCourseselected() {
+        return courseselected;
+    }
+
+    public void setCourseselected(String courseselected) {
+        this.courseselected = courseselected;
+    }
 
     @Override
     public String toString() {
         return "EnquiryForm{" +
                 "id=" + id +
                 ", studentName='" + studentName + '\'' +
-                ", mobileNumber='" + mobileNumber + '\'' +
+                ", mobileNumber=" + mobileNumber +
                 ", email='" + email + '\'' +
                 ", qualification='" + qualification + '\'' +
-                ", passingYear='" + passingYear + '\'' +
+                ", passingYear=" + passingYear +
                 ", courseName='" + courseName + '\'' +
                 ", courseMode='" + courseMode + '\'' +
                 ", address='" + address + '\'' +
                 ", enquirytime=" + enquirytime +
+                ", courseselected='" + courseselected + '\'' +
                 '}';
     }
-
-
-
-
-
 }

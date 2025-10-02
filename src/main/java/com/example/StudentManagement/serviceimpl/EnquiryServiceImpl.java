@@ -1,21 +1,31 @@
 package com.example.StudentManagement.serviceimpl;
 
+import com.example.StudentManagement.entity.CourseForm;
 import com.example.StudentManagement.entity.EnquiryForm;
 import com.example.StudentManagement.globaleexceptionhandling.StudentNotFoundException;
 import com.example.StudentManagement.repository.EnquiryRepository;
+import com.example.StudentManagement.service.EmailSender;
 import com.example.StudentManagement.service.EnquiryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class EnquiryServiceImpl implements EnquiryService {
 
+
     @Autowired
     EnquiryRepository enquiryRepository;
+
+
+
+    @Autowired
+    EmailSender emailSender;
 
     // ==============================
     // Save new enquiry
@@ -24,12 +34,12 @@ public class EnquiryServiceImpl implements EnquiryService {
 
     @Override
     public EnquiryForm saveNewEnqury(EnquiryForm enquiryForm) {
-        return enquiryRepository.save(enquiryForm);
-    }
 
-    // ==============================
-    // Get enquiry by ID
-    // ==============================
+
+        return enquiryRepository.save(enquiryForm);
+
+
+    }
     @Override
     public EnquiryForm getEnquiryStudent(long id) {
         return enquiryRepository.findById(id)
@@ -55,7 +65,7 @@ public class EnquiryServiceImpl implements EnquiryService {
         if (existEnquier.isPresent()) {
             EnquiryForm enquiryForm2 = existEnquier.get();
             enquiryForm2.setStudentName(enquiryForm.getStudentName());
-            enquiryForm2.setEmail(enquiryForm.getEmail());
+//            enquiryForm2.setEmail(enquiryForm.getEmail());
             enquiryForm2.setMobileNumber(enquiryForm.getMobileNumber());
 
             EnquiryForm updatedEnquiry = enquiryRepository.save(enquiryForm2);

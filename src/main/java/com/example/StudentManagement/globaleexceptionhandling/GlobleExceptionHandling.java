@@ -20,4 +20,16 @@ public class GlobleExceptionHandling {
         errorRespounce.put(" massqage" , ex.getMessage());
         return new ResponseEntity<>(errorRespounce,HttpStatus.NOT_FOUND);
     }
+
+    @ExceptionHandler(AdminNotFoundException.class)
+
+    public ResponseEntity<Map<String , Object>> HandleAdminNotException (AdminNotFoundException ex){
+        Map<String , Object> adminerror = new HashMap<>();
+        adminerror.put("timestamp " , LocalDateTime.now());
+        adminerror.put("Status " , HttpStatus.NOT_FOUND.value());
+        adminerror.put("error " , " you dont have any acsses yet to log in as admin");
+        adminerror.put("massage " , ex.getMessage());
+
+        return new ResponseEntity<>(adminerror,HttpStatus.NOT_FOUND);
+    }
 }

@@ -10,8 +10,8 @@ import java.util.Optional;
 @Repository
 public interface ResistrationRepository extends JpaRepository<StudentResistration, Long> {
 
-    @EntityGraph(attributePaths = {"studentfeesRecord", "studentaddress"})
-    Optional<StudentResistration> findByid(long id);
+//    @EntityGraph(attributePaths = {"studentfeesRecord", "studentaddress"})
+//    Optional<StudentResistration> findByid(long id);
 
 
 

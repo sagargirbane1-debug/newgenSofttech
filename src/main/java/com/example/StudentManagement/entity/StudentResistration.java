@@ -1,9 +1,14 @@
 package com.example.StudentManagement.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
 public class StudentResistration {
 
     @Id
@@ -26,10 +31,12 @@ public class StudentResistration {
     //@JsonIgnore
     private StudentFeesRecord studentfeesRecord ;
 
-   @OneToOne(cascade = CascadeType.ALL ,     fetch = FetchType.EAGER )
-    //@JsonIgnore
+   @OneToOne(cascade = CascadeType.ALL , fetch = FetchType.EAGER )
+    @JsonIgnore
    @JoinColumn(name = "address_id")
     private StudentAddress studentaddress ;
+
+
 
     public long getId() {
         return id;
@@ -95,6 +102,7 @@ public class StudentResistration {
         this.studentaddress = studentAddress;
     }
 
+
     @Override
     public String toString() {
         return "StudentResistration{" +
@@ -104,8 +112,8 @@ public class StudentResistration {
                 ", email='" + email + '\'' +
                 ", qualification='" + qualification + '\'' +
                 ", passing_year='" + passing_year + '\'' +
-                ", studentFeesRecord=" + studentfeesRecord +
-                ", studentAddress=" + studentaddress +
+                ", studentfeesRecord=" + studentfeesRecord +
+                ", studentaddress=" + studentaddress +
                 '}';
     }
 }

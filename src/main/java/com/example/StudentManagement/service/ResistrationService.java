@@ -14,4 +14,6 @@ public interface ResistrationService {
 
 
     List<StudentResistration> getAll();
+
+    String addFees (long id, double fees);
 }

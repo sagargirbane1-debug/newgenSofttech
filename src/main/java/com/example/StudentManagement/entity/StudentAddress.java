@@ -18,6 +18,19 @@ public class StudentAddress {
 
     private String contry ;
 
+
+
+
+
+
+
+
+
+
+
+
+
+
     @OneToOne(mappedBy = "studentaddress")
     @JsonIgnore
     private StudentResistration studentResistration;
